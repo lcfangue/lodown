@@ -22,3 +22,16 @@ function each(collection, action) {
     }
 }
 module.exports.each = each;
+
+/**
+ * identity: Designed to return the unchanged value of a given parameter
+ * passed to the function.
+ * 
+ * @param {Number, String, Boolean, Object, etc} value: The value that will be 
+ * returned.
+ */
+ function identity(value) {
+    return value;
+}
+module.exports.identity = identity;
+
