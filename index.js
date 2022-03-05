@@ -277,3 +277,99 @@ function pluck(array, property) {
 }
 module.exports.pluck = pluck;
 
+/**
+ * every: Designed to take in a collection and call a function on every element
+ * in the given collection, and return false if any elements in the given collection 
+ * have falsey values, or return true if there are no falsey values in the collection.
+ * 
+ * @param {Array, Object} collection: The collection that will be looped through
+ * in order to find truthy and/or falsey values.
+ * @param {Function} action: The function that will be passed on each element in
+ * the given collection.
+ */
+function every(collection, action) {
+    //is a function being passed
+    if (!action) {
+        if (Array.isArray(collection)) {
+            for (let i = 0; i < collection.length; i++) {
+                if (!collection[i]) {
+                    return false;
+                }
+            }
+        } else {
+            for (let key in collection) {
+                if (!collection[key]) {
+                    return false;
+                }
+            }
+        }
+    } else {
+        if (Array.isArray(collection)) {
+            for (let i = 0; i < collection.length; i++) {
+                if (!action(collection[i], i, collection)) {
+                    return false;
+                }
+            }
+        } else {
+            for (let key in collection) {
+                if (!action(collection[key], key, collection)) {
+                    return false;
+                }
+            }
+        }
+        
+    }
+    return true;
+};
+module.exports.every = every;
+
+/**
+ * some: Designed to take in a collection and call a function on every 
+ * element in the given collection, and return true if any elements 
+ * in the given collection have truthy values, or return false if 
+ * there are no truthy values in the collection.
+ *
+ * @param  {Array, Object} collection: The collection that will be 
+ * looped through in order to find truthy and/or falsey values.
+ * @param {Function} action: The function that will be passed on each 
+ * element in the given collection.
+ */
+
+function some(collection, action) {
+    if (!action) {
+        if (Array.isArray(collection)) {
+            for (let i = 0; i < collection.length; i++) {
+                if (collection[i]) {
+                    return true;
+                }
+            }
+
+        } else {
+            for (let key in collection) {
+                if (collection[key]) {
+                    return true;
+                }
+            }
+        }
+    } else {
+        if (Array.isArray(collection)) {
+            for (let i = 0; i < collection.length; i++) {
+                if (action(collection[i], i, collection)) {
+                    return true;
+                }
+            }
+        } else {
+            for (let key in collection) {
+                if (action(collection[key], key, collection)) {
+                    return true;
+                }
+            }
+        } 
+    } 
+return false;
+};
+module.exports.some = some;
+
+/**
+ * reduce: 
+ */
