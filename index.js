@@ -165,5 +165,75 @@ function unique(array) {
 module.exports.unique = unique;
 
 /**
- * filter:
+ * filter: Designed to take in an array and a function, where the function parameter
+ * will return a boolean value on each of the elements in the array. Filter returns 
+ * a new array comprised of the elements that return true.
+ * 
+ * @param {Array} array: The given array, whose elements each pass through the function
+ * parameter.
+ * @param {function} action: The function param that takes in each element of the array
+ * and returns a boolean value of either true or false.
+ */
+function filter(array, action) {
+    var newArr = [];
+    var result = false;
+    for (var i = 0; i < array.length; i++) {
+     if (action(array[i], i, array)) {
+             newArr.push(array[i]);
+        }
+    } return newArr;
+}  
+module.exports.filter = filter;
+
+/**
+ * reject: Designed to take in an array and a function, where the function parameter
+ * will return a boolean value on each of the elements in the array. Reject returns 
+ * a new array comprised of the elements that return false.
+ * 
+ * @param {Array} array: The given array, whose elements each pass through the function
+ * parameter.
+ * @param {Function} action: The function param that takes in each element of the array
+ * and returns a boolean value of either true or false.
+ */
+function reject(array, action) {
+    var newArr = [];
+    for (var i = 0; i < array.length; i++) { 
+        if (!action(array[i], i, array))  {
+           
+                newArr.push(array[i]);
+            }
+        }
+    return newArr;
+}
+module.exports.reject = reject;
+
+/**
+ * partition: Designed to take in an array and a function, and return a new array,
+ * consisting of two sub-arrays: one that contains falsey elements from the array
+ * parameter, and one that contains truthy elements from the array parameter.
+ * 
+ * @param {Array} array: The given array, whose elements are passed through the function
+ * parameter.
+ * @param {Function} action: The function param that takes in each element of the given
+ * array and returns a boolean value of either true or false.
+ */
+function partition(array, action) {
+   
+    var truthyArr = [];
+    var falseyArr = [];
+    
+    for (var i = 0; i < array.length; i++) {
+       if (action(array[i], i, array) === true) {
+            truthyArr.push(array[i]);
+        }
+        else {
+            falseyArr.push(array[i]);
+            }
+        }
+    return [truthyArr, falseyArr];
+}
+module.exports.partition = partition;
+
+/**
+ * map: 
  */
