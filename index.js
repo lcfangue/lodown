@@ -235,5 +235,45 @@ function partition(array, action) {
 module.exports.partition = partition;
 
 /**
- * map: 
+ * map: Designed to take in a collection, pass through each element
+ * in the collection, and return the values in a new array.
+ * 
+ * @param {Array, Object} collection: The object or array that will be 
+ * looped through.
+ * @param {Function} action: The function through which each element of
+ * the given collection is passed through.
  */
+function map(collection, action) {
+    let array = [];
+    if (Array.isArray(collection)) {
+        for (let i = 0; i < collection.length; i++) {
+             array.push(action(collection[i], i, collection));
+        }
+    } else {
+        for (let key in collection) {
+            array.push(action(collection[key], key, collection));      
+        }
+    }
+    return array;
+}
+module.exports.map = map;
+
+/**
+ * pluck: Designed to take in an array of objects and return the 
+ * values of the object's properties in a new array, using the previously
+ * created map function.
+ * 
+ * @param {Array} array: An array populated with objects, through which
+ * the function parameter will pass.
+ * @param {Object key} property: The value that will be returned from the 
+ * array's object elements, after they have been passed through the map function.
+ */
+function pluck(array, property) {
+    
+    var plucked = _.map(array, function(value) {
+         return value[property];
+    })
+    return plucked;
+}
+module.exports.pluck = pluck;
+
