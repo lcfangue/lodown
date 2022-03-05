@@ -371,5 +371,12 @@ return false;
 module.exports.some = some;
 
 /**
- * reduce: 
+ * reduce: Designed to take in a function and an array, and call the
+ * function on each element in the array, iterating through and finally
+ * returning the last value of the function call at the end of the
+ * iteration.
+ * 
+ * @param {Array} array:
+ * @param {Function} action:
+ * @param {} seed: 
  */
