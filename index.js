@@ -376,7 +376,43 @@ module.exports.some = some;
  * returning the last value of the function call at the end of the
  * iteration.
  * 
- * @param {Array} array:
- * @param {Function} action:
- * @param {} seed: 
+ * @param {Array} array: The array that will be iterated through.
+ * @param {Function} action: The function that will be called on each
+ * element in the given array.
+ * @param {Number} seed: 
  */
+function reduce(array, action, seed) {
+    let accumulator;
+    if (seed !== undefined) {
+        accumulator = seed;
+        for (var i = 0; i < array.length; i++) {
+            accumulator = action(accumulator, array[i], i, array);
+        }
+    } else {
+      accumulator = array[0];
+        for (var i = 1; i < array.length; i++) {
+            accumulator = action(accumulator, array[i], i, array);
+            }
+        }
+    return accumulator;
+};
+module.exports.reduce = reduce;
+
+/**
+ * extend: Designed to take in an undetermined amount of objects,
+ * and copy the properties into the first object from any number of
+ * following objects.
+ * 
+ * @param {Objects} undetermined: No specific parameters are passed
+ * through this function, because we want it to be able to take any
+ * number of objects in as parameters. Instead we use the *arguments*
+ * keyword as a placeholder within the function for an infinite 
+ * number of object parameters.
+ */
+function extend() {
+    for (let i = 0; i < arguments.length; i++) {
+        Object.assign(arguments[0], arguments[i]);
+    }
+    return arguments[0];
+};
+module.exports.extend = extend;
