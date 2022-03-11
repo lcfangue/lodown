@@ -27,8 +27,9 @@ module.exports.each = each;
  * identity: Designed to return the unchanged value of a given parameter
  * passed to the function.
  * 
- * @param {Number, String, Boolean, Object, etc} value: The value that will be 
+ * @param {any datatype} value: The value that will be 
  * returned, unaltered.
+ * @return {any datatype}: The value passed as an argument will be returned, unaltered.
  */
  function identity(value) {
     return value;
@@ -38,8 +39,8 @@ module.exports.identity = identity;
 /**
  * typeOf: Designed to take in a paramater and return its data type as a string.
  * 
- * @param {Number, String, Boolean, Object, etc} value: the given value whose 
- * data type will be returned.
+ * @param {any datatype} value: the given value whose datatype will be returned.
+ * @return {String}: A string containing the data type of the value passed through.
  */
 function typeOf(value) {
     if (Array.isArray(value)) {
@@ -59,6 +60,8 @@ module.exports.typeOf = typeOf;
  * @param {Array} array: The array whose first elements will be returned.
  * @param {Number} number: The number of elements that will be returned from
  * the given array.
+ * @return {Array}: Returns an array containing the first <number> of elements in the
+ * array that was passed as an argument.
  */
 function first(array, number) {
     if (!Array.isArray(array)) {
@@ -86,6 +89,8 @@ module.exports.first = first;
  * @param {Array} array: The array whose last elements will be returned
  * @param {Number} number: The number of elements that will be returned
  * from the given array.
+ * @return {Array}: Returns an array containing the last <number> of elements in the
+ * array that was passed as an argument.
  */
 function last(array, number) {
     if (!Array.isArray(array)) {
@@ -113,6 +118,8 @@ module.exports.last = last;
  * of the given value.
  * @param {Number, String, Boolean, Array, Object, etc} value: 
  * The value that will be searched for in the array.
+ * @return {Array index}: Returns the index of an array of the value passed
+ * in, if the value is contained within the array.
  */
 function indexOf(array, value) {
     for (var i = 0; i < array.length; i++) {
@@ -129,8 +136,9 @@ module.exports.indexOf = indexOf;
  * 
  * @param {Array} array: The array that will be looped through, in search of 
  * the given value.
- * @param {Number, String, Boolean, Object, Array, etc} value: The element that
- * will be searched for in the given array.
+ * @param {any datatype} value: The element that will be searched for in the given array.
+ * @return {Boolean}: Returns true or false, based on whether or not the value is in
+ * the array.
  */
 function contains(array, value) {
     for (var i = 0; i < array.length; i++) {
@@ -145,6 +153,7 @@ module.exports.contains = contains;
  * 
  * @param {Array} array: The given array, which will be returned as a new
  * array without duplicates.
+ * @return {Array}: Returns an array with any duplicate elements removed.
  */
 function unique(array) {
     //create new array to store result
@@ -173,6 +182,7 @@ module.exports.unique = unique;
  * parameter.
  * @param {function} action: The function param that takes in each element of the array
  * and returns a boolean value of either true or false.
+ * @return {Array}: Returns a new array of all the elements that returned true.
  */
 function filter(array, action) {
     var newArr = [];
@@ -194,6 +204,7 @@ module.exports.filter = filter;
  * parameter.
  * @param {Function} action: The function param that takes in each element of the array
  * and returns a boolean value of either true or false.
+ * @return {Array}: Returns a new array of all the elements that returned false.
  */
 function reject(array, action) {
     var newArr = [];
@@ -216,6 +227,7 @@ module.exports.reject = reject;
  * parameter.
  * @param {Function} action: The function param that takes in each element of the given
  * array and returns a boolean value of either true or false.
+ * @return 
  */
 function partition(array, action) {
    
