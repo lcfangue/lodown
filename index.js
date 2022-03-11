@@ -227,7 +227,8 @@ module.exports.reject = reject;
  * parameter.
  * @param {Function} action: The function param that takes in each element of the given
  * array and returns a boolean value of either true or false.
- * @return 
+ * @return {Array}: Returns a new array with 2 sub arrays of falsy elements and truthy
+ * elements.
  */
 function partition(array, action) {
    
@@ -254,6 +255,7 @@ module.exports.partition = partition;
  * looped through.
  * @param {Function} action: The function through which each element of
  * the given collection is passed through.
+ * @return {Array}: Returns all the elements in a new array.
  */
 function map(collection, action) {
     let array = [];
@@ -279,6 +281,7 @@ module.exports.map = map;
  * the function parameter will pass.
  * @param {Object key} property: The value that will be returned from the 
  * array's object elements, after they have been passed through the map function.
+ * @return {Array}: Returns an array containing the values of an object's properties.
  */
 function pluck(array, property) {
     
@@ -298,6 +301,8 @@ module.exports.pluck = pluck;
  * in order to find truthy and/or falsey values.
  * @param {Function} action: The function that will be passed on each element in
  * the given collection.
+ * @return {Boolean}: Returns a boolean value based on the falsiness/truthiness of
+ * a collection's values.
  */
 function every(collection, action) {
     //is a function being passed
@@ -345,6 +350,8 @@ module.exports.every = every;
  * looped through in order to find truthy and/or falsey values.
  * @param {Function} action: The function that will be passed on each 
  * element in the given collection.
+ * @return {Boolean}: Returns a boolean value based on the falsiness/truthiness of
+ * a collection's values.
  */
 
 function some(collection, action) {
@@ -391,7 +398,9 @@ module.exports.some = some;
  * @param {Array} array: The array that will be iterated through.
  * @param {Function} action: The function that will be called on each
  * element in the given array.
- * @param {Number} seed: 
+ * @param {Number} seed: The starting point that the accumulator adds on to.
+ * @return {Number}: Returns the final, accumulated value at the end of the 
+ * iteration.
  */
 function reduce(array, action, seed) {
     let accumulator;
@@ -420,6 +429,8 @@ module.exports.reduce = reduce;
  * number of objects in as parameters. Instead we use the *arguments*
  * keyword as a placeholder within the function for an infinite 
  * number of object parameters.
+ * @return {Object}: Returns an object which contains the properties of all
+ * the subsequent object arguments that were passed into the function.
  */
 function extend() {
     for (let i = 0; i < arguments.length; i++) {
